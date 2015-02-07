@@ -10,5 +10,5 @@
 
 $(function () {
   $('.label-belt').not('.label-white-text').closest('.vote').find('.vote-agree').not('.active').click();
-  $('.label-belt .label-white-text').closest('.vote').find('.vote-disagree').not('.active').click();
+  $('.label-belt.label-white-text').closest('.vote').find('.vote-disagree').not('.active').click();
 });
