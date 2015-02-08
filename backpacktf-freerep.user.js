@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         backpack.tf downvotenolinks
+// @name         backpack.tf freerep
 // @namespace    http://steamcommunity.com/id/caresx/
 // @version      0.1
 // @description  Automatically downvote suggestions without links on backpack.tf
@@ -22,7 +22,7 @@ $(function () {
         }
         
         // ignore suggestions that the user has visited (ones that don't have a red discussion icon)
-        var discuss = vote.find('.btn-danger')[0];
+        var discuss = $('h6:contains(Talk)').parent().find('.btn-danger')[0];
         if (!discuss) return;
         var href = discuss.href;
         $.ajax({
