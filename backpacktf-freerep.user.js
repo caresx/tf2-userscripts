@@ -21,6 +21,11 @@ $(function () {
             return;
         }
         
+        // links in preview
+        if (vote.find('.quote-box a').length) {
+            return;
+        }
+        
         // ignore suggestions that the user has visited (ones that don't have a red discussion icon)
         var discuss = vote.find('h6:contains(Talk)').parent().find('.btn-danger')[0];
         if (!discuss) return;
