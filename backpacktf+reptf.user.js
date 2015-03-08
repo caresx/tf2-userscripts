@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         backpack rep.tf integration
 // @namespace    http://steamcommunity.com/id/caresx/
-// @version      0.9.1
+// @version      0.9.2
 // @description  rep.tf integration for backpack.tf
 // @author       cares
 // @match        *://backpack.tf/profiles/*
@@ -89,7 +89,7 @@ $(function () {
         $(this).text('-');
     }
     
-    $('.stm-tf2outpost').parent().after('<a class="btn btn-primary btn-xs" href="http://rep.tf/' + steamid + '" target="_blank" style="margin-left: 4px">rep.tf</a>')
+    $('.btn > .stm-tf2outpost').parent().after('<a class="btn btn-primary btn-xs" href="http://rep.tf/' + steamid + '" target="_blank" style="margin-left: 4px">rep.tf</a>')
     $('small:contains(Community)').html('Community <a id="showrep" style="font-size: 12px; cursor: pointer;">+</a>');
     $('#showrep').on('click', function (e) {
         var $this = $(this),
