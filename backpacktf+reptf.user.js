@@ -11,8 +11,7 @@
 // ==/UserScript==
 
 $(function () {
-    var steamid = (document.querySelector('.avatar-container a').href || "").replace(/\D/g, ''),
-        loading = true;
+    var steamid = (document.querySelector('.avatar-container a').href || "").replace(/\D/g, '');
     
     if (!steamid) return;
     var groups = [];
@@ -64,7 +63,6 @@ $(function () {
         $('.rep-tooltip').tooltip({html: true, title: function () { return $(this).data('content'); }});
         
         showBansModal();
-        loading = false;
     }
     
     function showBansModal() {
@@ -82,13 +80,6 @@ $(function () {
         $('.rep-entry').toggle(show);
     }
     
-    function onload() {
-        if (loading) return setTimeout(onload.bind(this), 100);
-        
-        showHtml(true);
-        $(this).text('-');
-    }
-    
     $('.btn > .stm-tf2outpost').parent().after('<a class="btn btn-primary btn-xs" href="http://rep.tf/' + steamid + '" target="_blank" style="margin-left: 4px">rep.tf</a>')
     $('small:contains(Community)').html('Community <a id="showrep" style="font-size: 12px; cursor: pointer;">+</a>');
     $('#showrep').on('click', function (e) {
@@ -96,12 +87,8 @@ $(function () {
             open = $this.text() === '+';
         
         if (open) {
-            if (loading) {
-                setTimeout(onload.bind(this), 100);
-            } else {
-                showHtml(true);
-                $this.text('-');
-            }
+            showHtml(true);
+            $this.text('-');
         } else {
             $this.text('+');
             showHtml(false);
