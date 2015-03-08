@@ -1,10 +1,11 @@
 // ==UserScript==
-// @name         backpack.tf reptf
+// @name         backpack rep.tf integration
 // @namespace    http://steamcommunity.com/id/caresx/
 // @version      0.9
 // @description  rep.tf integration for backpack.tf
 // @author       cares
-// @match        http://backpack.tf/*
+// @match        http://backpack.tf/profiles/*
+// @match        http://backpack.tf/id/*
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
@@ -68,7 +69,7 @@ $(function () {
     function showBansModal() {
         if (!bans.length) return;
         
-        var html = "User is banned on ⋅ <a href='http://rep.tf/" + steamid + "' target='_blank'>rep.tf</a><br><br><ul>";
+        var html = "<b style='color:red'>User is banned on</b> ⋅ <a href='http://rep.tf/" + steamid + "' target='_blank'>rep.tf</a><br><br><ul>";
         bans.forEach(function (ban) {
             html += "<li><b>" + ban.name + "</b> - " + ban.reason + "</li>";
         });
