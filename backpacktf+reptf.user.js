@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         backpack rep.tf integration
 // @namespace    http://steamcommunity.com/id/caresx/
-// @version      0.9.3
+// @version      0.9.4
 // @description  rep.tf integration for backpack.tf
 // @author       cares
 // @match        *://backpack.tf/profiles/*
@@ -9,6 +9,7 @@
 // @match        *://backpack.tf/u/*
 // @match        *://backpack.tf/trust/*
 // @match        *://backpack.tf/friends/*
+// @match        *://backpack.tf/users/*
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
