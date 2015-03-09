@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         backpack rep.tf integration
 // @namespace    http://steamcommunity.com/id/caresx/
-// @version      0.9.2
+// @version      0.9.3
 // @description  rep.tf integration for backpack.tf
 // @author       cares
 // @match        *://backpack.tf/profiles/*
 // @match        *://backpack.tf/id/*
 // @match        *://backpack.tf/u/*
+// @match        *://backpack.tf/trust/*
+// @match        *://backpack.tf/friends/*
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
@@ -62,7 +64,7 @@ $(function () {
         /*ban("BBG", json.bbgBans);*/
         $('.rep-tooltip').tooltip({html: true, title: function () { return $(this).data('content'); }});
         
-        showBansModal();
+        $('#showrep').css('color', bans.length ? 'red' : 'green');
     }
     
     function showBansModal() {
@@ -73,7 +75,7 @@ $(function () {
             html += "<li><b>" + ban.name + "</b> - " + ban.reason + "</li>";
         });
         html += "</ul>";
-        modal("rep.tf bans", html)
+        modal("rep.tf bans", html);
     }
     
     function showHtml(show) {
@@ -81,12 +83,19 @@ $(function () {
     }
     
     $('.btn > .stm-tf2outpost').parent().after('<a class="btn btn-primary btn-xs" href="http://rep.tf/' + steamid + '" target="_blank" style="margin-left: 4px">rep.tf</a>')
-    $('small:contains(Community)').html('Community <a id="showrep" style="font-size: 12px; cursor: pointer;">+</a>');
+    $('small:contains(Community)').html('Community <a id="showrep" style="font-size: 13px; cursor: pointer;">+</a>');
+    
+    var bansShown = false;
     $('#showrep').on('click', function (e) {
         var $this = $(this),
             open = $this.text() === '+';
         
         if (open) {
+            if (!bansShown) {
+                showBansModal();
+                bansShown = true;
+            }
+            
             showHtml(true);
             $this.text('-');
         } else {
